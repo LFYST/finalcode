@@ -253,9 +253,9 @@ public class LoanCalcViewController implements Initializable {
 		double dAdditionalPayment = (this.AdditionalPayment.getText().isEmpty() ? 0
 				: Double.parseDouble(AdditionalPayment.getText()));
 		double dEscrow = (this.EscrowAmount.getText().isEmpty() ? 0 : Double.parseDouble(this.EscrowAmount.getText()));
-		
-		lblTotalPayments.setText(myloan.getTotalPayment());	
-		lblTotalInterest.setText(myloan.getTotalInterest());
+		NumberFormat fmtCurrency = NumberFormat.getCurrencyInstance(Locale.US);
+		lblTotalPayemnts.setText(fmtCurrency.format(loanExtra.getTotalPayments()));	
+		lblTotalInterest.setText(fmtCurrency.format(loanExtra.getTotalPayments()));
 		tvResults.setItems(paymentList);
 		paymentList.addAll();
 		
