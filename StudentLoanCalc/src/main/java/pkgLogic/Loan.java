@@ -45,18 +45,25 @@ public class Loan {
 	public double GetPMT() {
 		double PMT = 0;
 		//TODO: Execute PMT function to determine payment with given rate, nbr of payments, PV, FV, compounding)
+		PMT = this.getLoanAmount()*(this.getInterestRate()/12)/(1-Math.pow(1+this.getInterestRate()/12, -this.getLoanPaymentCnt()));
 		return PMT;
 	}
 
 	public double getTotalPayments() {
 		//TODO: Return the total payments for the loan
 		double tot = 0;
+		for(int i=0; i<this.getLoanPayments().size();i++) {
+			tot += this.getLoanPayments().get(i).getPayment();
+		}
 		return tot;
 	}
 
 	public double getTotalInterest() {
 		//TODO: Return the total interest for the loan
 		double interest = 0;
+		for(int i=0; i< loanPayments.size();i++) {
+			interest += loanPayments.get(i).getInterestPayment();
+		}
 		return interest;
 	}
 

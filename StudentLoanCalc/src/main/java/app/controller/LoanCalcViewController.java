@@ -241,7 +241,6 @@ public class LoanCalcViewController implements Initializable {
 	@FXML
 	private void btnCalcLoan(ActionEvent event) {
 
-		// TODO: Call the method to Clear the Results
 
 		// Validate the data. If the method returns 'false', exit the method
 		if (ValidateData() == false)
@@ -254,6 +253,12 @@ public class LoanCalcViewController implements Initializable {
 		double dAdditionalPayment = (this.AdditionalPayment.getText().isEmpty() ? 0
 				: Double.parseDouble(AdditionalPayment.getText()));
 		double dEscrow = (this.EscrowAmount.getText().isEmpty() ? 0 : Double.parseDouble(this.EscrowAmount.getText()));
+		
+		lblTotalPayments.setText(myloan.getTotalPayment());	
+		lblTotalInterest.setText(myloan.getTotalInterest());
+		tvResults.setItems(paymentList);
+		paymentList.addAll();
+		
 		LocalDate localDate = PaymentStartDate.getValue();
 
 		Loan loanExtra = new Loan(dLoanAmount, dInterestRate, dNbrOfYears, localDate, dAdditionalPayment, dEscrow);
